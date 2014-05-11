@@ -1,0 +1,115 @@
+Decoder V-5.0.28 Build 12319, Nov 15 2012
+Options: -ArgFileSources/main_asm.args -Env"GENPATH=C:/Users/Personal/Documents/WorkspaceCW/Prender_Led/Project_Headers;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/src;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/lib;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/src;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/include;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/include;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/asm_include" -EnvOBJPATH=. -EnvTEXTPATH=. -OSources\main_asm.lst -ViewHidden -WmsgFob"%f%e:%l:%k:%d %m\n"
+Decoding File: 'Sources\main_asm.obj'
+File format: ELF/DWARF
+
+DISASSEMBLY OF: 'MyCode' FROM 1896 TO 1998 SIZE 102 (0X66)
+Opening source file 'C:\Users\Personal\Documents\WorkspaceCW\Prender_Led\Sources\main.asm'
+   31:             LDHX   #__SEG_END_SSTACK ; initialize the stack pointer
+_Startup:
+00000000 450000   LDHX   #_SEG_END_SSTACK
+   32:             TXS
+00000003 94       TXS    
+   33: 			CLI			; enable interrupts
+00000004 9A       CLI    
+   36: 			MOV #0F0H,PTBDD ;Configurar puerto
+00000005 6EF003   MOV    #0xF0,0x03
+   37: 			CLR 63H ;63H bit0 -> secuencia que ejecutara
+00000008 3F63     CLR    0x63
+   42: 			LDX #04 ;inicializar contador
+mainLoop:
+0000000A AE04     LDX    #0x04
+   43: 			LDA #10H ;Inicializar barrido
+0000000C A610     LDA    #0x10
+   44: 			BRCLR 3,63H,secuencia1
+0000000E 07631A   BRCLR  3,0x63,*+29       ;abs = 0x002B
+   46: secuencia2: STA PTBD
+secuencia2:
+00000011 B702     STA    0x02
+   47: 			JSR delay
+00000013 CD0000   JSR    delay
+   48: 			ASLA
+00000016 48       LSLA   
+   49: 			DBNZX secuencia2
+00000017 5BF8     DBNZX  *-6       ;abs = 0x0011
+   50: 			LDX #03
+00000019 AE03     LDX    #0x03
+   51: 			LDA #40H
+0000001B A640     LDA    #0x40
+   52: shifth_der:	STA PTBD
+shifth_der:
+0000001D B702     STA    0x02
+   53: 			JSR delay
+0000001F CD0000   JSR    delay
+   54: 			LSRA
+00000022 44       LSRA   
+   55: 			DBNZX shifth_der
+00000023 5BF8     DBNZX  *-6       ;abs = 0x001D
+   56: 			LDX #03	
+00000025 AE03     LDX    #0x03
+   57: 			LDA #20H
+00000027 A620     LDA    #0x20
+   58: 			BRA secuencia2
+00000029 20E6     BRA    *-24       ;abs = 0x0011
+   61: secuencia1: STA PTBD
+secuencia1:
+0000002B B702     STA    0x02
+   62: 			JSR delay
+0000002D CD0000   JSR    delay
+   63: 			ASLA
+00000030 48       LSLA   
+   64: 			DBNZX secuencia1
+00000031 5BF8     DBNZX  *-6       ;abs = 0x002B
+   65: 			LDX #04
+00000033 AE04     LDX    #0x04
+   66: 			LDA #10H
+00000035 A610     LDA    #0x10
+   67: 			BRA secuencia1
+00000037 20F2     BRA    *-12       ;abs = 0x002B
+Opening source file 'C:\Users\Personal\Documents\WorkspaceCW\Prender_Led\Project_Headers\derivative.inc'
+   13:             STA SRS              ; feed the watchdog
+00000039 C71800   STA    0x1800
+Opening source file 'C:\Users\Personal\Documents\WorkspaceCW\Prender_Led\Sources\main.asm'
+   70:             BRA    mainLoop
+0000003C 20CC     BRA    *-50       ;abs = 0x000A
+   75: 			MOV #04H,62H
+delay:
+0000003E 6E0462   MOV    #0x04,0x62
+   76: loop2:		MOV #0FFH,61H
+loop2:
+00000041 6EFF61   MOV    #0xFF,0x61
+   77: loop1:		MOV #0FFH,60H
+loop1:
+00000044 6EFF60   MOV    #0xFF,0x60
+   78: loop0:		NOP
+loop0:
+00000047 9D       NOP    
+   79: 			DBNZ 60H,loop0
+00000048 3B60FC   DBNZ   0x60,*-1       ;abs = 0x0047
+Opening source file 'C:\Users\Personal\Documents\WorkspaceCW\Prender_Led\Project_Headers\derivative.inc'
+   13:             STA SRS              ; feed the watchdog
+0000004B C71800   STA    0x1800
+Opening source file 'C:\Users\Personal\Documents\WorkspaceCW\Prender_Led\Sources\main.asm'
+   81: 			DBNZ 61H,loop1
+0000004E 3B61F3   DBNZ   0x61,*-10       ;abs = 0x0044
+   82: 			DBNZ 62H,loop2
+00000051 3B62ED   DBNZ   0x62,*-16       ;abs = 0x0041
+   84: 			BRCLR 3,PTBD,sigue
+00000054 07020E   BRCLR  3,0x02,*+17       ;abs = 0x0065
+   85: 			AIS #-01H
+00000057 A7FF     AIS    #-1
+   86: 			BRCLR 3,63H,prende
+00000059 076304   BRCLR  3,0x63,*+7       ;abs = 0x0060
+   87: 			CLR 63H
+0000005C 3F63     CLR    0x63
+   88: 			BRA empezar
+0000005E 20AA     BRA    *-84       ;abs = 0x000A
+   89: prende:		MOV #08H,63H
+prende:
+00000060 6E0863   MOV    #0x08,0x63
+   90: 			BRA empezar	
+00000063 20A5     BRA    *-89       ;abs = 0x000A
+   92: sigue:		RTS
+sigue:
+00000065 81       RTS    
+

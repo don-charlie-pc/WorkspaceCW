@@ -1,0 +1,146 @@
+*** EVALUATION ***
+PROGRAM "Motor_Beta.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.50 Build 13184, Jul  4 2013
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+main_asm.obj                            Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xE000 (_Startup)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.init                            162     R     0xE000     0xE0A1   ROM
+.stack                            64   R/W      0x100      0x13F   RAM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):          A4 (dec:      164)
+READ_WRITE (R/W):       40 (dec:       64)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xE000   _Startup
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- main_asm.obj --
+- PROCEDURES:
+     _Startup                                  E000      10      16       0   .init       
+     main                                      E000       0       0       0   .init       
+     empezar                                   E010       8       8       2   .init       
+     caso_izq                                  E018       5       5       0   .init       
+     derecha                                   E01D       2       2       0   .init       
+     ciclo_der                                 E01F       A      10       0   .init       
+     der_doble                                 E029       9       9       0   .init       
+     limite_der                                E032       2       2       0   .init       
+     sigue_der                                 E034      18      24       0   .init       
+     izquierda                                 E04C       2       2       0   .init       
+     ciclo_izq                                 E04E       6       6       0   .init       
+     izq_doble                                 E054       9       9       0   .init       
+     limite_izq                                E05D       2       2       0   .init       
+     sigue_izq                                 E05F      19      25       0   .init       
+     delay                                     E078       3       3       4   .init       
+     loop2                                     E07B       3       3       0   .init       
+     loop1                                     E07E       3       3       0   .init       
+     loop0                                     E081      1A      26       0   .init       
+     prende_bit                                E09B       6       6       0   .init       
+     continuar                                 E0A1       1       1       0   .init       
+- VARIABLES:
+- LABELS:
+     __SEG_END_SSTACK                           140       0       0       1               
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  main_asm.obj                                 0    162      0
+  other                                       64      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".init"
+  main _Startup empezar caso_izq derecha ciclo_der der_doble limite_der 
+  sigue_der izquierda ciclo_izq izq_doble limite_izq sigue_izq delay loop2 
+  loop1 loop0 prende_bit continuar 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     main                                      E000       0       0       0   .init       
+     _Startup                                  E000      10      16       0   .init       
+     empezar                                   E010       8       8       2   .init       
+     caso_izq                                  E018       5       5       0   .init       
+     derecha                                   E01D       2       2       0   .init       
+     ciclo_der                                 E01F       A      10       0   .init       
+     der_doble                                 E029       9       9       0   .init       
+     limite_der                                E032       2       2       0   .init       
+     sigue_der                                 E034      18      24       0   .init       
+     izquierda                                 E04C       2       2       0   .init       
+     ciclo_izq                                 E04E       6       6       0   .init       
+     izq_doble                                 E054       9       9       0   .init       
+     limite_izq                                E05D       2       2       0   .init       
+     sigue_izq                                 E05F      19      25       0   .init       
+     delay                                     E078       3       3       4   .init       
+     loop2                                     E07B       3       3       0   .init       
+     loop1                                     E07E       3       3       0   .init       
+     loop0                                     E081      1A      26       0   .init       
+     prende_bit                                E09B       6       6       0   .init       
+     continuar                                 E0A1       1       1       0   .init       
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+_Startup                  USES __SEG_END_SSTACK 
+ciclo_der                 USES delay 
+sigue_der                 USES delay 
+ciclo_izq                 USES delay 
+sigue_izq                 USES delay 
+loop0                     USES empezar 
+prende_bit                USES empezar 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+ |    
+ +- _Startup            
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 164
+

@@ -1,0 +1,128 @@
+*** EVALUATION ***
+PROGRAM "Prender_Led.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC08
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.50 Build 13184, Jul  4 2013
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+main_asm.obj                            Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xE000 (_Startup)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.init                            102     R     0xE000     0xE065   ROM
+.stack                            64   R/W      0x100      0x13F   RAM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):          68 (dec:      104)
+READ_WRITE (R/W):       40 (dec:       64)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xE000   _Startup
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- main_asm.obj --
+- PROCEDURES:
+     _Startup                                  E000       A      10       0   .init       
+     main                                      E000       0       0       0   .init       
+     mainLoop                                  E00A       7       7       0   .init       
+     empezar                                   E00A       0       0       0   .init       
+     secuencia2                                E011       C      12       0   .init       
+     shifth_der                                E01D       E      14       0   .init       
+     secuencia1                                E02B      13      19       0   .init       
+     delay                                     E03E       3       3       3   .init       
+     loop2                                     E041       3       3       0   .init       
+     loop1                                     E044       3       3       0   .init       
+     loop0                                     E047      19      25       0   .init       
+     prende                                    E060       5       5       0   .init       
+     sigue                                     E065       1       1       0   .init       
+- VARIABLES:
+- LABELS:
+     __SEG_END_SSTACK                           140       0       0       1               
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  main_asm.obj                                 0    102      0
+  other                                       64      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".init"
+  main _Startup empezar mainLoop secuencia2 shifth_der secuencia1 delay loop2 
+  loop1 loop0 prende sigue 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     main                                      E000       0       0       0   .init       
+     _Startup                                  E000       A      10       0   .init       
+     empezar                                   E00A       0       0       0   .init       
+     mainLoop                                  E00A       7       7       0   .init       
+     secuencia2                                E011       C      12       0   .init       
+     shifth_der                                E01D       E      14       0   .init       
+     secuencia1                                E02B      13      19       0   .init       
+     delay                                     E03E       3       3       3   .init       
+     loop2                                     E041       3       3       0   .init       
+     loop1                                     E044       3       3       0   .init       
+     loop0                                     E047      19      25       0   .init       
+     prende                                    E060       5       5       0   .init       
+     sigue                                     E065       1       1       0   .init       
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+_Startup                  USES __SEG_END_SSTACK 
+secuencia2                USES delay 
+shifth_der                USES delay 
+secuencia1                USES delay 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+ |    
+ +- _Startup            
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 104
+

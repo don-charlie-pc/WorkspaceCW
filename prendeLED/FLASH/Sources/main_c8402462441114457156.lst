@@ -1,0 +1,43 @@
+Decoder V-5.0.28 Build 12319, Nov 15 2012
+Options: -ArgFileSources/main_c.args -Env"GENPATH=C:/Users/Personal/Documents/WorkspaceCW/prendeLED/Project_Headers;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/src;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/lib;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/src;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/include;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/include;C:\Freescale\CW MCU v10.3\eclipse\../MCU/lib/hc08c/device/asm_include" -EnvOBJPATH=. -EnvTEXTPATH=. -OSources\main_c.lst -ViewHidden -WmsgFob"%f%e:%l:%k:%d %m\n"
+Decoding File: 'Sources\main_c.obj'
+File format: ELF/DWARF
+
+DISASSEMBLY OF: '.text' FROM 340 TO 373 SIZE 33 (0X21)
+Opening source file 'C:/Users/Personal/Documents/WorkspaceCW/prendeLED\Sources\main.c'
+    4: void main(void) {
+main:
+00000000 A7FE     AIS    #-2
+    5: 	unsigned char state = 0;
+00000002 95       TSX    
+00000003 6F01     CLR    1,X
+    6: 	unsigned char cuenta = 0;
+00000005 7F       CLR    ,X
+    7:   EnableInterrupts;
+00000006 9A       CLI    
+   10: 	state = 0;
+00000007 6F01     CLR    1,X
+   11: 	while(cuenta < 250)
+00000009 F6       LDA    ,X
+0000000A 21       SKIP   
+   13: 		cuenta++;
+0000000B 4C       INCA   
+   11: 	while(cuenta < 250)
+0000000C A1FA     CMP    #0xFA
+0000000E 25FB     BCS    *-3       ;abs = 0x000B
+   15: 	state = 1;
+00000010 A601     LDA    #0x01
+00000012 95       TSX    
+00000013 E701     STA    1,X
+   16: 	cuenta = 0;
+00000015 7F       CLR    ,X
+   19: 		cuenta++;
+00000016 7C       INC    ,X
+   17: 	while(cuenta < 250)
+00000017 F6       LDA    ,X
+00000018 A1FA     CMP    #0xFA
+0000001A 25FA     BCS    *-4       ;abs = 0x0016
+   21:     __RESET_WATCHDOG();	/* feeds the dog */
+0000001C C70000   STA    SRS
+0000001F 20E6     BRA    *-24       ;abs = 0x0007
+

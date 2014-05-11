@@ -1,0 +1,27 @@
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:78:error:C2450 Expected:  . * + - & ! ~ ++ -- -> [ (  IDENT CONSTANT STRING sizeof __alignof__ __va_sizeof__ __va_arg_type__    
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:warning:C1801 Implicit parameter-declaration for 'LcdManager_Init'
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:78:warning:C1420 Result of function-call is ignored
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C1826 Integer-expression expected
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:90:error:C1822 Type mismatch (expected 'unsigned char ', given 'error ')
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:90:error:C1806 Illegal cast-operation
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:90:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C1822 Type mismatch (expected 'int ', given 'error ')
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C1806 Illegal cast-operation
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:91:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:91:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:95:warning:C1801 Implicit parameter-declaration for 'ModuloX_Finish'
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C1822 Type mismatch (expected 'unsigned int ', given 'error ')
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:81:error:C1806 Illegal cast-operation
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:98:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:98:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:107:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:107:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:114:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:114:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:121:warning:C1801 Implicit parameter-declaration for 'LcdManager_RemainderTask'
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:123:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\main.c:123:error:C2801 ';' missing
+68:information:C1440 This is causing previous message 1019
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\LcdManager.c:121:error:C2801 ';' missing
+C:/Users/Personal/Documents/WorkspaceCW/LAB_P2_P1/Project_Headers\../Sources\LcdManager.c:123:error:C2801 ';' missing
