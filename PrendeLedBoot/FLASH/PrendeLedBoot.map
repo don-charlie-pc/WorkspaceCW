@@ -23,12 +23,12 @@ Entry point: 0xE000 (_Startup)
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.init                             61     R     0xE000     0xE03C   ROM
+.init                            115     R     0xE000     0xE072   ROM
 .stack                            64   R/W      0x100      0x13F   RAM
 .vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
 
 Summary of section sizes per section type:
-READ_ONLY (R):          3F (dec:       63)
+READ_ONLY (R):          75 (dec:      117)
 READ_WRITE (R/W):       40 (dec:       64)
 
 *********************************************************************************************
@@ -45,13 +45,20 @@ MODULE:                 -- main_asm.obj --
 - PROCEDURES:
      _Startup                                  E000       4       4       0   .init       
      main                                      E000       0       0       0   .init       
-     mainLoop                                  E004       6       6       0   .init       
-     loop2                                     E00A       3       3       0   .init       
-     loop1                                     E00D       3       3       0   .init       
-     loop0                                     E010      14      20       0   .init       
-     loop6                                     E024       3       3       0   .init       
-     loop5                                     E027       3       3       0   .init       
-     loop4                                     E02A      13      19       0   .init       
+     mainLoop                                  E004       3       3       0   .init       
+     downled                                   E007       3       3       0   .init       
+     loop12                                    E00A       3       3       0   .init       
+     loop11                                    E00D       3       3       0   .init       
+     loop10                                    E010      14      20       0   .init       
+     loop16                                    E024       3       3       0   .init       
+     loop15                                    E027       3       3       0   .init       
+     loop14                                    E02A      16      22       0   .init       
+     loop2                                     E040       3       3       0   .init       
+     loop1                                     E043       3       3       0   .init       
+     loop0                                     E046      14      20       0   .init       
+     loop6                                     E05A       3       3       0   .init       
+     loop5                                     E05D       3       3       0   .init       
+     loop4                                     E060      13      19       0   .init       
 - VARIABLES:
 - LABELS:
      __SEG_END_SSTACK                           140       0       0       1               
@@ -60,14 +67,15 @@ MODULE:                 -- main_asm.obj --
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  main_asm.obj                                 0     61      0
+  main_asm.obj                                 0    115      0
   other                                       64      2      0
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".init"
-  main _Startup mainLoop loop2 loop1 loop0 loop6 loop5 loop4 
+  main _Startup mainLoop downled loop12 loop11 loop10 loop16 loop15 loop14 
+  loop2 loop1 loop0 loop6 loop5 loop4 
 
 *********************************************************************************************
 OBJECT LIST SORTED BY ADDRESS
@@ -75,13 +83,20 @@ OBJECT LIST SORTED BY ADDRESS
 ---------------------------------------------------------------------------------------------
      main                                      E000       0       0       0   .init       
      _Startup                                  E000       4       4       0   .init       
-     mainLoop                                  E004       6       6       0   .init       
-     loop2                                     E00A       3       3       0   .init       
-     loop1                                     E00D       3       3       0   .init       
-     loop0                                     E010      14      20       0   .init       
-     loop6                                     E024       3       3       0   .init       
-     loop5                                     E027       3       3       0   .init       
-     loop4                                     E02A      13      19       0   .init       
+     mainLoop                                  E004       3       3       0   .init       
+     downled                                   E007       3       3       0   .init       
+     loop12                                    E00A       3       3       0   .init       
+     loop11                                    E00D       3       3       0   .init       
+     loop10                                    E010      14      20       0   .init       
+     loop16                                    E024       3       3       0   .init       
+     loop15                                    E027       3       3       0   .init       
+     loop14                                    E02A      16      22       0   .init       
+     loop2                                     E040       3       3       0   .init       
+     loop1                                     E043       3       3       0   .init       
+     loop0                                     E046      14      20       0   .init       
+     loop6                                     E05A       3       3       0   .init       
+     loop5                                     E05D       3       3       0   .init       
+     loop4                                     E060      13      19       0   .init       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -112,5 +127,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 2
-Total size of all blocks to be downloaded: 63
+Total size of all blocks to be downloaded: 117
 

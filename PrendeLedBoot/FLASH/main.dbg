@@ -1989,7 +1989,41 @@ _Startup:
 
 mainLoop: 
             MOV #0F0H,PTBDD ;Configurar puerto
-            
+
+
+;codigo nuevo
+
+	
+downled:
+			MOV #01H,62H
+loop12:		MOV #0FFH,61H
+loop11:		MOV #0FFH,60H
+loop10:		NOP
+			DBNZ 60H,loop10
+			feed_watchdog
+            STA SRS              ; feed the watchdog
+			DBNZ 61H,loop11
+			DBNZ 62H,loop12
+			
+			LDA #0F0H
+			STA PTBD
+			
+			MOV #01H,62H			
+loop16:		MOV #0FFH,61H
+loop15:		MOV #0FFH,60H
+loop14:		NOP
+			DBNZ 60H,loop14
+			feed_watchdog
+            STA SRS              ; feed the watchdog
+			DBNZ 61H,loop15
+			DBNZ 62H,loop16
+
+
+			LDA #00H
+			STA PTBD
+			BRA downled
+;*********************************
+			
 			MOV #04H,62H
 loop2:		MOV #0FFH,61H
 loop1:		MOV #0FFH,60H

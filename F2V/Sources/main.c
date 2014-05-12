@@ -57,17 +57,13 @@
 /*************************************************************************************************/
 /*********************                  Global Constants                    **********************/
 /*************************************************************************************************/
-static unsigned char sgu8AdcValue;
-static unsigned char sgu8SpeedLevel;
-static unsigned char sgu8OldSpeedLevel;
 static unsigned char new_freq = 0;
-static char sgu8Dir; 
 static char sgpu8_3bitLcdMsg[8];
 static unsigned int contador_8ms = 0;
-char muestreo_nuevo = 0;
-char muestreo_anterior = 0;
+static char muestreo_nuevo = 0;
+static char muestreo_anterior = 0;
 static unsigned int diametro = 8000; //En 8 cm. con los ms se compensa
-unsigned int count_to_send = 0;
+static unsigned int count_to_send = 1;
 /*************************************************************************************************/
 /*********************				   Exported Functions					**********************/
 /*************************************************************************************************/
@@ -78,21 +74,26 @@ unsigned int count_to_send = 0;
 void main(void)
 {
 	unsigned int u16count_of_ms;
-	char u8RpmSpeed;
+	unsigned int u8RpmSpeed;
+	char i;
 
 	EnableInterrupts;
 	LcdManager_Init();
 	//Configure input frequency pin
 	(void) GPIO_ConfigPinDirection(PortA, PIN_FREC, 0);
-	sgu8OldSpeedLevel = 0;
 	//Configured for 8 ms
 	SRTISC = 0x11;
 
 	for(;;){
-			LcdManager_UpdateTask();
-			if((LcdManager_IsBusy() == 0) && (new_freq == 1))
+			//LcdManager_UpdateTask();
+			//if((LcdManager_IsBusy() == 0) && (new_freq == 1))
+			if(new_freq == 1)
 			{
+				__RESET_WATCHDOG();
+				DisableInterrupts;
+				LcdManager_Send(0x80,0);
 				//RPM Speed
+				
 				u16count_of_ms = (diametro/((count_to_send)*8));
 				u16count_of_ms *= 10;
 				sgpu8_3bitLcdMsg[0] = (char)(u16count_of_ms/100) + 0x30;
@@ -104,16 +105,18 @@ void main(void)
 				sgpu8_3bitLcdMsg[5] = 'm';
 				sgpu8_3bitLcdMsg[6] = '/';
 				sgpu8_3bitLcdMsg[7] = 's';
-				LcdManager_WriteString(1,0,sgpu8_3bitLcdMsg,8);
+				//LcdManager_WriteString(1,0,sgpu8_3bitLcdMsg,8);
 				new_freq = 0;
+				for (i = 0; i < 8; i++) {
+					LcdManager_Send(sgpu8_3bitLcdMsg[i],1);
+					__RESET_WATCHDOG();
+				}
+				EnableInterrupts;
+				SRTISC = 0x11;
 			}
 		__RESET_WATCHDOG();
 	}	
 } 
-void frecuencia_total()
-{
-	
-}
 
 interrupt 23 void RTI_interrupt(void)
 {
@@ -121,18 +124,21 @@ interrupt 23 void RTI_interrupt(void)
 	SRTISC_RTIACK = 1;
 	muestreo_nuevo = GPIO_ReadPin(PortA, PIN_FREC);
 	//Este caso se dara unicamente cuando detecte la linea
-	if((muestreo_nuevo==1) && (muestreo_anterior==0))
+	if((muestreo_nuevo==1) & (muestreo_anterior==0))
 	{
 		count_to_send = contador_8ms;
 		new_freq = 1;
 		contador_8ms = 0;		
+		muestreo_anterior = muestreo_nuevo;
 		//Comienza cuenta y actualiza frecuencia
 	}
 	//Caso en que estara contando hasta detectar la linea de nuevo
 	else
 	{
-		muestreo_anterior = muestreo_nuevo;
 		contador_8ms+=1;
+		muestreo_anterior = muestreo_nuevo;
+		new_freq = 0;
 	}
+
 }
 

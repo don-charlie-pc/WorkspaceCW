@@ -65,6 +65,7 @@ void LcdManager_WriteString(char u8linea, char u8offset, char * pu8String, char 
 	Set the LCD BusyFlag.
 	Updates values of line, offset, a string containing an specific value, and length of string.
  */
-
+void LcdManager_Send(char u8data, char u8forData);
+void LcdManager_ClearCmd(void);
 /*************************************************************************************************/
 #endif /* LCDMANAGER_H_ */
